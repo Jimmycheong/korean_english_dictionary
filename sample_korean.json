@@ -1,0 +1,210 @@
+[
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b82c"
+    },
+    "wordid": 7981,
+    "word": "흘긋",
+    "syn": "",
+    "def": "asquint",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 6,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b82d"
+    },
+    "wordid": 10420,
+    "word": "들손",
+    "syn": "",
+    "def": "bail",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 6,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b82e"
+    },
+    "wordid": 10679,
+    "word": "바향수지",
+    "syn": "",
+    "def": "balm",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 12,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b82f"
+    },
+    "wordid": 14383,
+    "word": "비트",
+    "syn": "",
+    "def": "bit",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 6,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b830"
+    },
+    "wordid": 17793,
+    "word": "양테",
+    "syn": "",
+    "def": "brim",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 6,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b831"
+    },
+    "wordid": 20374,
+    "word": "가골",
+    "syn": "",
+    "def": "callus",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 6,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b832"
+    },
+    "wordid": 23398,
+    "word": "아선약",
+    "syn": "",
+    "def": "catechu",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 9,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b833"
+    },
+    "wordid": 27163,
+    "word": "민병",
+    "syn": "",
+    "def": "choco",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 6,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b834"
+    },
+    "wordid": 30142,
+    "word": "극상",
+    "syn": "",
+    "def": "climax",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 6,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b835"
+    },
+    "wordid": 31104,
+    "word": "클럽실",
+    "syn": "",
+    "def": "club",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 9,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b836"
+    },
+    "wordid": 32107,
+    "word": "여계친의",
+    "syn": "",
+    "def": "cognate",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 12,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b837"
+    },
+    "wordid": 35786,
+    "word": "원뿔",
+    "syn": "",
+    "def": "cone",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 6,
+    "hanja": "",
+    "frequency": ""
+  },
+  {
+    "_id": {
+      "$oid": "4e534f0049dc3b3d27a8b838"
+    },
+    "wordid": 38711,
+    "word": "쿡",
+    "syn": "",
+    "def": "cooky",
+    "posn": 1,
+    "pos": 1,
+    "submitter": "engdic",
+    "doe": "2006-01-16 00:52:46",
+    "wordsize": 3,
+    "hanja": "",
+    "frequency": ""
+  }
+]
