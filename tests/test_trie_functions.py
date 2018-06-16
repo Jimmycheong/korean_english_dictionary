@@ -14,6 +14,7 @@ from functions.trie_functions import (
 	create_root_node, 
 	find_prefix,
 	find_definition,
+	update_definition,
 	add_word_to_trie,  
 	look_for_words, 
 	look_for_words_beginning_with,
@@ -102,6 +103,21 @@ def test_find_definition(prepopulated_trie):
 	found_definition | should.equal.to(definition)
 
 	no_definition | should.equal.to(None)
+
+def test_update_definition(prepopulated_trie):
+	root = prepopulated_trie
+
+	term = "어디"
+	definition = "wear"
+
+	add_word_to_trie(root, term, definition)
+
+	new_definition = "where"
+
+	root = update_definition(root, term, new_definition)
+
+	found_definition = find_definition(root, term)
+	found_definition | should.equal.to(new_definition)
 
 '''TEST HELPER FUNCTIONS '''
 def get_single_child(parent: Node):

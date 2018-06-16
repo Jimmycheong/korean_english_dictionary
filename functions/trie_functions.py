@@ -139,15 +139,49 @@ def add_word_to_trie(node: Node, word: str, definition: str):
     node.is_a_word = True
     node.definition = definition
 
+def update_definition(root, word, new_definition) -> Node:
 
-def find_definition(root, prefix: str): 
-    
     '''
-    TODO: 
+
+    Updates a term within an existing trie with a new definition
+
+    Params: 
+        root (Node): The existing trie
+        word (str): the term of which the definition is to be updated
+        new_definition (str): the new definition for the term 
+
+    Returns: 
+        A Node object representing the new trie containing the term with the new definition, else returns None
+
     '''
 
     node = root 
-    for char in prefix:         
+    for char in word:         
+        if char not in check_children_letters(node):
+            return None 
+        node = get_child_node(node, char)
+    if node.is_a_word and node.definition != "":
+        node.definition = new_definition
+        return root
+    else:
+        return None
+
+def find_definition(root, word: str): 
+ 
+    '''
+    Updates a term within an existing trie with a new definition
+
+    Params: 
+        root (Node): A trie containing words
+        word (str): The term for the definition to be found
+
+    Returns: 
+        Returns the a string contaiining the definition, otherwise None
+
+    '''
+
+    node = root 
+    for char in word:         
         if char not in check_children_letters(node):
             return None 
         node = get_child_node(node, char)

@@ -1,7 +1,7 @@
 *final_dump.json
 *korean_dict.json
 *big_korean_word_list.txt
-*korean_pickle.pkl
+*korean_pickle.pkl*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
