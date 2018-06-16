@@ -2,25 +2,36 @@
 '''
 
 import pickle
+import json
+
 from functions.trie_functions import (
     create_root_node,
     add_word_to_trie
 )
 
-INPUT_FILE = "../resources/korean_word_list.txt"
-OUTPUT_FILE = "../resources/korean_pickle.pkl"
+from console_progressbar import ProgressBar
+
+INPUT_FILE = "resources/korean_dict.json"
+OUTPUT_FILE = "resources/korean_pickle.pkl"
 
 def main():
 
-    with open(f"{INPUT_FILE}") as file:
-        raw_content = file.readlines()
+    with open(INPUT_FILE) as file:
+        data = json.load(file)
 
-    print(f"\n\tSize of word document: {len(raw_content)}\n")
+    total = len(data)
+    
+    print(f"\n\tSize of word document: {total}\n\n")
 
     trie = create_root_node()
+    
+    pb = ProgressBar(total=total,prefix='Start', suffix='Complete', decimals=2, length=50)
 
-    for word in raw_content: 
-        add_word_to_trie(trie, word)
+    current = 0
+    for word in data: 
+        add_word_to_trie(trie, word, data[word])
+        current +=1
+        pb.print_progress_bar(current)
 
     print('''\tFinished inserting words into tree \n \
         \tCreating and saving pickle...

@@ -118,7 +118,7 @@ def get_child_node(parent: Node, char: str) -> Node:
     filtered = list(filter(lambda s: s.letter == char , parent.children))
     return filtered[0]
 
-def add_word_to_trie(node: Node, word: str):
+def add_word_to_trie(node: Node, word: str, definition: str):
 
     '''     
     Adds a new word to the trie structure
@@ -137,6 +137,24 @@ def add_word_to_trie(node: Node, word: str):
         child_node = get_child_node(node, char)
         node = child_node
     node.is_a_word = True
+    node.definition = definition
+
+
+def find_definition(root, prefix: str): 
+    
+    '''
+    TODO: 
+    '''
+
+    node = root 
+    for char in prefix:         
+        if char not in check_children_letters(node):
+            return None 
+        node = get_child_node(node, char)
+    if node.is_a_word:
+        return node.definition
+    else:
+        return None
 
 def find_prefix(root, prefix: str): 
     

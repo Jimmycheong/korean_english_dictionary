@@ -6,6 +6,14 @@
 import re
 from typing import List
 
+def strip_and_sub_using_regex(word):
+    REGEX = r"[\!…\\a-zA-z\d (),/~\t0-9.?:;’'-_<>\"|`]+"
+    pattern = re.compile(REGEX)
+
+    cleaned = re.sub(REGEX,"",word).strip()
+    return cleaned
+
+
 def extract_korean_words_from_list(raw_content) -> List[str]:
 
     '''

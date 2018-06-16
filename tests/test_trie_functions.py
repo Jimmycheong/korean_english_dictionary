@@ -9,10 +9,11 @@ from sys import path
 from os.path import dirname as dir
 path.append(dir(path[0]))
 
-from hanyongapp.functions.Node import Node
-from hanyongapp.functions.trie_functions import (
+from functions.Node import Node
+from functions.trie_functions import (
 	create_root_node, 
 	find_prefix,
+	find_definition,
 	add_word_to_trie,  
 	look_for_words, 
 	look_for_words_beginning_with,
@@ -24,15 +25,20 @@ from grappa import should
 
 '''FIXTURES '''
 
-SAMPLE_LIST = ["한","한국","왜","이름"]
+TEST_DICT = {
+	"한": "one",
+	"한국": "Korea",
+	"왜": "why",
+	"이름": "name"
+}
 
 @pytest.fixture
 def prepopulated_trie():
 
 	root = create_root_node()
 
-	for word in SAMPLE_LIST:
-		add_word_to_trie(root, word)
+	for word in TEST_DICT:
+		add_word_to_trie(root, word, TEST_DICT[word]) # FIX THE DEFINTION
 
 	return root
 
@@ -69,19 +75,33 @@ def test_look_for_words(prepopulated_trie):
 
 	results = look_for_words(root, "")
 
-	results | should.be.equal.to(SAMPLE_LIST)
+	results | should.be.equal.to(list(TEST_DICT.keys()))
 
+def test_add_word_to_trie(prepopulated_trie):
+	root = prepopulated_trie
 
-def test_add_word_to_trie():
-	root = create_root_node()
-
-	add_word_to_trie(root, "한국")
+	add_word_to_trie(root, "한국", "Korea")
 
 	child_1 = get_single_child(root)
 	child_1.letter | should.be.equal.to("한")
 
 	child_2 = get_single_child(child_1)
 	child_2.letter | should.be.equal.to("국")
+
+def test_find_definition(prepopulated_trie):
+	root = prepopulated_trie
+
+	term = "행복하다"
+	definition = "to be happy"
+
+	add_word_to_trie(root, term, definition)
+
+	found_definition = find_definition(root, term)
+	no_definition = find_definition(root, "없은언어")
+
+	found_definition | should.equal.to(definition)
+
+	no_definition | should.equal.to(None)
 
 '''TEST HELPER FUNCTIONS '''
 def get_single_child(parent: Node):

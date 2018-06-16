@@ -14,8 +14,12 @@ from flask import (
     render_template,
     jsonify
 )
+import json
 
-from functions.trie_functions import look_for_words_beginning_with
+from functions.trie_functions import (
+    look_for_words_beginning_with,
+    find_definition
+)
 
 
 app = Flask(__name__)
@@ -35,4 +39,17 @@ def not_found(error):
 @app.route("/search/<term>")
 def search_for_term(term):
     suggestions = look_for_words_beginning_with(trie, term)
-    return jsonify(suggestions)
+
+    top_20_suggestions = suggestions[:15]
+
+    return jsonify(top_20_suggestions)
+
+@app.route("/meaning/<term>")
+def find_definition_of_term(term):
+
+    definition = find_definition(trie, term)
+
+    print(f"Searched for the term: {term}\
+            Definition: {definition}")
+
+    return jsonify({term: definition})
