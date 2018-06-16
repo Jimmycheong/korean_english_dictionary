@@ -25,7 +25,7 @@ from functions.trie_functions import (
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-TRIE_FILE = "resources/korean_pickle.pkl"
+TRIE_FILE = "resources/pickles/korean_pickle.pkl"
 
 with open(TRIE_FILE, 'rb') as file:
     trie = pickle.load(file)
@@ -51,7 +51,7 @@ def search_for_term(term):
     return jsonify(top_20_suggestions)
 
 
-@app.route("/meaning/<term>")
+@app.route("/definition/<term>")
 def find_definition_of_term(term):
 
     definition = find_definition(trie, term)

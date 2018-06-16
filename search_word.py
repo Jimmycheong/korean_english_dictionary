@@ -10,7 +10,7 @@ from functions.trie_functions import look_for_words_beginning_with
 
 LINE = "---"
 LONG_LINE = LINE * 10
-INPUT_FILE = "../resources/korean_pickle.pkl"
+INPUT_FILE = "resources/pickles/korean_pickle.pkl"
 
 def main(prefix):
 	

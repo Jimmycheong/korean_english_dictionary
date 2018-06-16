@@ -2,10 +2,12 @@
 '''
 
 import json
-from functions.word_functions import strip_and_sub_using_regex
+from word_functions import strip_and_sub_using_regex
 
-INPUT_FILE = "resources/final_dump.json"
-OUTPUT_FILE = "resources/big_korean_word_list.txt"
+INPUT_FILE = "../json/final_dump.json"
+OUTPUT_FILE = "../txt/autocomplete_word_list.txt"
+
+REGEX = r"[\!…\\a-zA-z\d (),/~\t0-9.?:;’'-_<>\"|`]+"
 
 def main():
 
@@ -20,7 +22,7 @@ def main():
     with open(OUTPUT_FILE, "w") as file:
         for obj in data:
 
-            cleaned = strip_and_sub_using_regex(str(obj['word']))
+            cleaned = strip_and_sub_using_regex(REGEX, str(obj['word']))
             if cleaned != "":
                 file.writelines(cleaned+"\n")
 

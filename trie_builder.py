@@ -11,8 +11,8 @@ from functions.trie_functions import (
 
 from console_progressbar import ProgressBar
 
-INPUT_FILE = "resources/korean_dict.json"
-OUTPUT_FILE = "resources/korean_pickle.pkl"
+INPUT_FILE = "resources/json/korean_dict.json"
+OUTPUT_FILE = "resources/pickles/korean_pickle.pkl"
 
 def main():
 

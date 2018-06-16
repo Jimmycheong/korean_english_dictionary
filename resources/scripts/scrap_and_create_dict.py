@@ -3,8 +3,8 @@
 
 import json
 
-INPUT_FILE = "resources/final_dump.json"
-OUTPUT_FILE = "resources/korean_dict.json"
+INPUT_FILE = "../json/merged_dictionaries.json"
+OUTPUT_FILE = "../json/korean_dict.json"
 
 def main():
 
@@ -18,9 +18,8 @@ def main():
     dict_ = {}
 
     for obj in data:
-        dict_[obj["word"]] = obj["def"]
-
-    print("FINAL DICT: ", dict_)
+        if obj["term"] not in dict_: 
+            dict_[obj["term"]] = obj["definition"]
 
     with open(OUTPUT_FILE, "w") as file:
         json.dump(dict_, file, ensure_ascii=False)

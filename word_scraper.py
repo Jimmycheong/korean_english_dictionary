@@ -7,8 +7,8 @@ import random
 
 from functions.word_functions import extract_korean_words_from_list
 
-INPUT_FILE = "../resources/6000koreanwords.txt"
-OUTPUT_FILE = "../resources/korean_word_list.txt"
+INPUT_FILE = "resources/txt/6000koreanwords.txt" # TO BE UPDATED
+OUTPUT_FILE = "resources/txt/korean_word_list.txt"
 
 def main():
 
