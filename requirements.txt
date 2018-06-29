@@ -1,6 +1,7 @@
 atomicwrites==1.1.5
 attrs==18.1.0
 colorama==0.3.9
+console-progressbar==1.0.2
 grappa==0.1.9
 more-itertools==4.2.0
 pluggy==0.6.0
