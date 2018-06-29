@@ -47,6 +47,7 @@ def search_for_term(term):
     suggestions = look_for_words_beginning_with(trie, term)
 
     top_20_suggestions = suggestions[:15]
+    print("Returning: ", top_20_suggestions)
 
     return jsonify(top_20_suggestions)
 

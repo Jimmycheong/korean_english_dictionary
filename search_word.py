@@ -21,12 +21,14 @@ def main(prefix):
 
     print(f'''Search term: {prefix}
             {LONG_LINE}
-            Complete list of suggestions: 
+            First 10 suggestions: 
             {LONG_LINE}'''
     )
 
-    for word in suggestions: 
+    for word in suggestions[:10]: 
         print(f'''\t{word}\n\t{LINE}\n''')
+
+    print(f'Total number of suggestions: {len(suggestions)}')
 
 if __name__ == '__main__':
 
