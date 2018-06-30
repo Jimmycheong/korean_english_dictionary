@@ -38,7 +38,7 @@ def main():
 
     generate_autocomplete_wordlist('final_dump.json', resources_path)
 
-    build_trie_with_terms_and_definitions('korean_dict.json', resources_path)
+    build_trie_with_terms_and_definitions('simple_korean_dict.json', resources_path)
 
     print("\tComplete setting up server data")
 

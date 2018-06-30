@@ -1,0 +1,26 @@
+{
+	"final_dump_url": "http://benhumphreys.ca/kdict/kdict_dump.json",
+	"resources_path": "resources",
+	"merged_file_name": "merged_dictionaries.json",
+	"simple_korean_dict": "simple_korean_dict.json",
+	"input_data": [
+		{
+			"input_file": "6000_p1.txt",
+			"extension": "txt",
+			"data_format": 1,
+			"output_file": "korean_dict_6000_part_1.json"
+		},
+		{
+			"input_file": "6000_p2.txt",
+			"extension": "txt",
+			"data_format": 2,
+			"output_file": "korean_dict_6000_part_2.json"
+		},
+		{
+			"input_file": "final_dump.json",
+			"extension": "json",
+			"data_format": 3,
+			"output_file": "korean_dict_6000_part_3.json"
+		}
+	]
+}

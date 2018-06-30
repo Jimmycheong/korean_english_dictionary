@@ -1,4 +1,4 @@
-*.json
+resources/json/*
 *big_korean_word_list.txt
 *korean_pickle.pkl*
 *autocomplete_word_list.txt
