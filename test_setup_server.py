@@ -58,6 +58,7 @@ def test_get_config():
 
     expected_keys = [
         'final_dump_url', 
+        'resources_path',
         'merged_file_name', 
         'simple_korean_dict',
         'input_data'

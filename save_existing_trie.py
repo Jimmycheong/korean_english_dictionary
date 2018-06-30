@@ -2,6 +2,8 @@
 
 Dump all existing terms and corresponding trie into a JSON file
 
+TODO: Write logic of saving an exist after it has been updated, containing new terms and definitions.
+
 '''
 import pickle 
 import sys
