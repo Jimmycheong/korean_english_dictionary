@@ -100,9 +100,10 @@ def extract_simple_dict_with_definitions(dense_dict_filepath: str, resources_pat
     print(f"\tReading {dense_dict_filepath}\n")
     data = read_data_file(f"{resources_path}/json/{dense_dict_filepath}", 'json')
 
-    dict_of_terms = defaultdict(str)
-    for obj in data:    
-        dict_of_terms[obj["term"]] = (obj["definition"])
+    dict_of_terms = {}
+    for obj in data:
+        if obj['term'] not in dict_of_terms:
+            dict_of_terms[obj["term"]] = (obj["definition"])
 
     output_file = "simple_korean_dict.json"
     with open(f"{resources_path}/json/{output_file}", "w") as file:
