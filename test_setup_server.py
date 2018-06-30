@@ -115,7 +115,6 @@ def test_parse_files(config_fixture):
     for filepath in output_files: 
         output_path = create_path_obj_for_json(filepath)
         output_path.exists() | should.be.true
-        # os.remove(output_path)
 
 @pytest.mark.run(after='test_parse_files')
 def test_merge_dictionaries(config_fixture):
@@ -149,7 +148,7 @@ def test_extract_simple_dict_with_definitions(config_fixture):
 
     simple_dict_path.exists() | should.be.true
 
-
+@pytest.mark.run(after='test_extract_simple_dict_with_definitions')
 def test_generate_autocomplete_wordlist(config_fixture):
 
     data_format_3_file = config_fixture[2]['input_file']
@@ -166,7 +165,7 @@ def test_generate_autocomplete_wordlist(config_fixture):
 
     num_lines_in_created_file | should.be.equal(len(data_format_3))
 
-
+@pytest.mark.run(after='test_generate_autocomplete_wordlist')
 def test_build_trie_with_terms_and_definitions():
 
     data_file = "simple_korean_dict.json"
@@ -176,6 +175,22 @@ def test_build_trie_with_terms_and_definitions():
     pickle_path = create_path_obj_for_pickle("korean_pickle.pkl")
     pickle_path.exists() | should.be.true
 
+
+@pytest.mark.run(after='test_build_trie_with_terms_and_definitions')
+def test_clean_up_generated_files():
+
+    files_to_remove = [
+        'test_data_format_1.json',
+        'test_data_format_2.json',
+        'test_data_format_3.json',
+        'merged_dictionaries.json',
+        'simple_korean_dict.json'
+    ]
+
+    fullpaths_to_remove = map(lambda s: create_path_obj_for_json(s), files_to_remove)
+
+    for file in fullpaths_to_remove:
+        os.remove(file)
 
 '''
 TEST HELPER METHODS

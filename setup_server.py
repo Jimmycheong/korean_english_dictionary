@@ -26,6 +26,22 @@ from functions.trie_functions import (
 def main():
 
     config = get_config("config.json")
+    resources_path = config["resources_path"]
+    input_data = config['input_data']
+
+    parse_files(input_data, resources_path)
+
+    list_of_dicts = list(map(lambda obj: obj['output_file'],input_data))
+    merge_dictionaries(list_of_dicts, resources_path)
+
+    extract_simple_dict_with_definitions('merged_dictionaries.json', resources_path)
+
+    generate_autocomplete_wordlist('final_dump.json', resources_path)
+
+    build_trie_with_terms_and_definitions('korean_dict.json', resources_path)
+
+    print("\tComplete setting up server data")
+
 
 def build_trie_with_terms_and_definitions(data_path: str, resources_path: str):
 
