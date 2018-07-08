@@ -75,6 +75,8 @@ def test_get_config():
 
 def test_parse_text_file_for_data_format_1(config_fixture):
 
+    print(f"TEST RESOURCES PATH: {TEST_RESOURCES_PATH}")
+
     obj = config_fixture[0]
 
     output_path = create_path_obj_for_json(obj['output_file'])
