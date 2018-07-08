@@ -177,8 +177,8 @@ def read_data_file(filename, extension):
     print(f"\tReading {filename}\n")
 
     if extension == 'txt': 
-        with open(filename, 'r') as file:
-            return [line.decode('utf-8') for line in file.readlines()]
+        with open(filename, 'r', encoding="utf-8") as file:
+            return file.readlines()
     elif extension == 'json':
         with open(filename) as file:
             return json.load(file)
