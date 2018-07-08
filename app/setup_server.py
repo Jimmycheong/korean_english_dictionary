@@ -180,7 +180,7 @@ def read_data_file(filename, extension):
         with open(filename, 'r', encoding="utf-8") as file:
             return file.readlines()
     elif extension == 'json':
-        with open(filename) as file:
+        with open(filename, encoding="utf-8") as file:
             return json.load(file)
     else:
         raise Exception(f"Unknown extension: {extension}")
