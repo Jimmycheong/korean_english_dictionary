@@ -106,7 +106,7 @@ def extract_simple_dict_with_definitions(dense_dict_filepath: str, resources_pat
             dict_of_terms[obj["term"]] = (obj["definition"])
 
     output_file = "simple_korean_dict.json"
-    with open(f"{resources_path}/json/{output_file}", "w") as file:
+    with open(f"{resources_path}/json/{output_file}", "w", encoding="utf-8") as file:
         json.dump(dict_of_terms, file, ensure_ascii=False)
 
     print(F'''
@@ -127,7 +127,7 @@ def merge_dictionaries(list_of_dicts, resources_path: str):
         full_path = f"{resources_path}/json/{filename}"
         merged += read_data_file(full_path, 'json')
 
-    with open(f"{resources_path}/json/merged_dictionaries.json", "w") as file:
+    with open(f"{resources_path}/json/merged_dictionaries.json", "w", encoding="utf-8") as file:
         json.dump(merged, file, ensure_ascii=True)
 
     print(F'''
