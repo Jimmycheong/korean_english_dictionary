@@ -1,0 +1,16 @@
+body{
+  min-height: 800px;
+  height: 100%;
+}
+.component{
+  height: 600px;
+}
+
+.ui-widget {
+  font-family: Verdana,Arial,sans-serif;
+  font-size: 16px !important;
+}
+
+.searchInput {
+	font-size: 20px !important; 
+}
