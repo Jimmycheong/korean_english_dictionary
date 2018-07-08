@@ -80,7 +80,7 @@ def generate_autocomplete_wordlist(data_resource: str, resources_path: str):
 
     output_file = f"{resources_path}/txt/autocomplete_word_list.txt"
 
-    with open(output_file, "w") as file:
+    with open(output_file, "w", encoding="utf-8") as file:
         for obj in data:
             cleaned = strip_and_sub_using_regex(REGEX, str(obj['word']))
             if cleaned != "":
