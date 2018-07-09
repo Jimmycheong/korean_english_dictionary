@@ -86,7 +86,6 @@ def test_parse_text_file_for_data_format_1(config_fixture):
     output_path.exists() | should.be.true
 
     os.remove(output_path)
-    # TODO: remember to use test files and delete them!
 
 def test_parse_text_file_for_data_format_2(config_fixture):
 
@@ -100,8 +99,6 @@ def test_parse_text_file_for_data_format_2(config_fixture):
 
     os.remove(output_path)
 
-    # TODO: remember to use test files and delete them!
-
 def test_parse_text_file_for_data_format_3(config_fixture):
 
     obj = config_fixture[2]
@@ -112,7 +109,6 @@ def test_parse_text_file_for_data_format_3(config_fixture):
     output_path.exists() | should.be.true
 
     os.remove(output_path)
-    # TODO: remember to use test files and delete them!
 
 def test_parse_files(config_fixture):
     
@@ -170,7 +166,7 @@ def test_generate_autocomplete_wordlist(config_fixture):
 
     autocomplete_words_filepath.exists() | should.be.true
     
-    num_lines_in_created_file = sum(1 for line in open(f"{TEST_RESOURCES_PATH}/txt/autocomplete_word_list.txt"))
+    num_lines_in_created_file = sum(1 for line in open(f"{TEST_RESOURCES_PATH}/txt/autocomplete_word_list.txt", encoding="utf-8"))
 
     num_lines_in_created_file | should.be.equal(len(data_format_3))
 
