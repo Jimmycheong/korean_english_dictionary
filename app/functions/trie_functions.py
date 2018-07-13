@@ -1,28 +1,29 @@
-'''functions.py 
+"""functions.py
 
 The following file contains a collection of functions for the trie structure search engine
 
-'''
+"""
 
 import sys
+
 sys.path.append("..")
 
-from typing import List
+from typing import List, Tuple
 from .Node import Node
 
-def look_for_words_beginning_with(node: Node, prefix: str) -> List[str]:
-    
-    ''' 
+
+def look_for_words_beginning_with_prefix(node: Node, prefix: str) -> List[str]:
+    """
     Takes a prefix string and searches a trie for words
 
     Params:
         node (Node): A root node representing the root of a Trie structure
-        prefix(str): A str containing the prefix of a desired search word 
+        prefix(str): A str containing the prefix of a desired search word
 
-    Returns: 
+    Returns:
         results (List[str]): A list of words beginning with the prefix requested
 
-    '''
+    """
 
     original = node
     results = []
@@ -31,7 +32,7 @@ def look_for_words_beginning_with(node: Node, prefix: str) -> List[str]:
         child_node = find_matching_child_node(node, char)
         if child_node:
             node = child_node
-        else: 
+        else:
             return results
 
     if node != original:
@@ -41,9 +42,38 @@ def look_for_words_beginning_with(node: Node, prefix: str) -> List[str]:
 
     return results
 
-def find_matching_child_node(node: Node, char: str) -> Node: 
+def look_for_ranked_words_beginning_with_prefix(node: Node, prefix: str) -> List[Tuple[str, int]]:
+    """
+    Takes a prefix string and searches a trie for words
 
-    '''
+    Params:
+        node (Node): A root node representing the root of a Trie structure
+        prefix(str): A str containing the prefix of a desired search word
+
+    Returns:
+        results (List[str]): A list of words beginning with the prefix requested
+
+    """
+
+    original = node
+    results = []
+
+    for char in prefix:
+        child_node = find_matching_child_node(node, char)
+        if child_node:
+            node = child_node
+        else:
+            return results
+
+    if node != original:
+        endings_list = look_for_words_with_count(node)
+        prepended_words = list(map(lambda n: (prefix + n[0], n[1]), endings_list))
+        results += prepended_words
+        
+    return sorted(results, key=lambda x: x[1], reverse=True)
+
+def find_matching_child_node(node: Node, char: str) -> Node:
+    """
     Finds a child node from the node's list of children that contains the matching search character
 
 
@@ -51,10 +81,10 @@ def find_matching_child_node(node: Node, char: str) -> Node:
         node (Node): The node to start searching from
         char (str): The search character
 
-    Returns: 
+    Returns:
         A node instances containing the letter, otherwise None.
 
-    '''
+    """
 
     child_letters = check_children_letters(node)
     if char in child_letters:
@@ -62,20 +92,20 @@ def find_matching_child_node(node: Node, char: str) -> Node:
         return node.children[child_index]
     return None
 
-def look_for_words(node: Node, accumulated: str = "") -> List[str]: 
 
-    '''
+def look_for_words(node: Node, accumulated: str = "") -> List[str]:
+    """
     Recursively searches for all words in a trie structure. Base condition returns if the
     last letter actually creates a word. Continues to recursively search for more words
     if child nodes exist.
 
     Params:
         node (Node): Any node within a trie structure
-        accumulated: A str containing letters gathered from higher parents 
+        accumulated: A str containing letters gathered from higher parents
 
-    Returns: 
-        results (List[str]): A list of words 
-    '''
+    Returns:
+        results (List[str]): A list of words
+    """
 
     results = []
 
@@ -87,50 +117,75 @@ def look_for_words(node: Node, accumulated: str = "") -> List[str]:
             results += look_for_words(child, accumulated + child.letter)
     return results
 
+def look_for_words_with_count(node: Node, accumulated: str = "") -> List[str]:
+    """
+    Recursively searches for all words in a trie structure. Base condition returns if the
+    last letter actually creates a word. Continues to recursively search for more words
+    if child nodes exist.
+
+    Params:
+        node (Node): Any node within a trie structure
+        accumulated: A str containing letters gathered from higher parents
+
+    Returns:
+        results (List[str]): A list of words
+    """
+
+    results = []
+
+    if node.is_a_word:
+        results += [(accumulated, node.count)]
+
+    if len(node.children) > 0:
+        for child in node.children:
+            results += look_for_words_with_count(child, accumulated + child.letter)
+    return results
+
 def create_root_node():
-    '''
+    """
     Create a root node representing the root node of a trie
 
     Returns:
         Node: an Node instance containing representing an empty Trie
 
-    '''
+    """
     return Node("*")
 
+
 def check_children_letters(node: Node):
-    '''
+    """
     Returns a list of strings representing the letters for each child node in the list passed in
 
-    Args: 
-        list_(List[Node]): 
+    Params:
+        node (Node): A node to check
 
     Returns:
-        A list of characters for each Node
-    '''
+        list_(List[Node]): A list of characters for each Node
+    """
     return list(map(lambda s: s.letter, node.children))
 
+
 def get_child_node(parent: Node, char: str) -> Node:
-
-    '''
+    """
     TODO: Finish definition
-    '''
+    """
 
-    filtered = list(filter(lambda s: s.letter == char , parent.children))
+    filtered = list(filter(lambda s: s.letter == char, parent.children))
     return filtered[0]
 
-def add_word_to_trie(node: Node, word: str, definition: str):
 
-    '''     
+def add_word_to_trie(node: Node, word: str, definition: str, count: int = None):
+    """
     Adds a new word to the trie structure
 
-    Args: 
+    Params:
         list_(List[Node]):
 
-    Returns: 
-        SSOMETHING TODO 
-    
-    '''
-    for char in word: 
+    Returns:
+        SOMETHING TODO
+
+    """
+    for char in word:
         children_letters = check_children_letters(node)
         if char not in children_letters:
             node.children += [Node(char)]
@@ -138,27 +193,28 @@ def add_word_to_trie(node: Node, word: str, definition: str):
         node = child_node
     node.is_a_word = True
     node.definition = definition
+    node.count = count
+
 
 def update_definition(root, word, new_definition) -> Node:
-
-    '''
+    """
 
     Updates a term within an existing trie with a new definition
 
-    Params: 
+    Params:
         root (Node): The existing trie
         word (str): the term of which the definition is to be updated
-        new_definition (str): the new definition for the term 
+        new_definition (str): the new definition for the term
 
-    Returns: 
+    Returns:
         A Node object representing the new trie containing the term with the new definition, else returns None
 
-    '''
+    """
 
-    node = root 
-    for char in word:         
+    node = root
+    for char in word:
         if char not in check_children_letters(node):
-            return None 
+            return None
         node = get_child_node(node, char)
     if node.is_a_word and node.definition != "":
         node.definition = new_definition
@@ -166,39 +222,39 @@ def update_definition(root, word, new_definition) -> Node:
     else:
         return None
 
-def find_definition(root, word: str): 
- 
-    '''
+
+def find_definition(root, word: str):
+    """
     Updates a term within an existing trie with a new definition
 
-    Params: 
+    Params:
         root (Node): A trie containing words
         word (str): The term for the definition to be found
 
-    Returns: 
+    Returns:
         Returns the a string contaiining the definition, otherwise None
 
-    '''
+    """
 
-    node = root 
-    for char in word:         
+    node = root
+    for char in word:
         if char not in check_children_letters(node):
-            return None 
+            return None
         node = get_child_node(node, char)
     if node.is_a_word:
         return node.definition
     else:
         return None
 
-def find_prefix(root, prefix: str): 
-    
-    '''
-    TODO: 
-    '''
 
-    node = root 
-    for char in prefix:         
+def find_prefix(root, prefix: str):
+    """
+    TODO:
+    """
+
+    node = root
+    for char in prefix:
         if char not in check_children_letters(node):
-            return False 
+            return False
         node = get_child_node(node, char)
     return True
