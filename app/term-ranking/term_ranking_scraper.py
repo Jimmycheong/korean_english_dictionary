@@ -1,43 +1,48 @@
-'''term_ranking_scraper.py
+"""term_ranking_scraper.py
 
-The following file is used to scrap all words from a transcript of an episode of Goblin (도깨비) to find the most common words used to later rank a list of suggested words.
+The following file is used to scrap all words from the transcripts from episodes 
+of Goblin (도깨비) to find the most common words used to later rank a list of 
+suggested words.
 
-'''
+"""
+from collections import Counter
 import json
 import re
-from collections import Counter
+import os
+import sys
 
-INPUT_FILE_TEMPLATE = 'goblin_dialogs/도깨비 Episode_{}.txt'
 REGEX = r"[\!…\\a-zA-z\d (),/~\t0-9.?:;’'-_<>\"|`★]+"
-NUMBER_OF_FILES = 16
-OUTPUT_FILE = "korean_term_ranking.json"
+OUTPUT_FILE = "../resources/json/korean_term_ranking.json"
 
-def main():
-
+def main(input_dir):
     korean_counter = Counter()
 
-    for n in range(1,NUMBER_OF_FILES+1):
-        print_file_name(n)
-        
-        with open(INPUT_FILE_TEMPLATE.format(n), 'r') as file:
+    for filename in os.listdir(input_dir):
+        print("Extracting words from: " + filename)
+
+        with open(input_dir + filename, 'r') as file:
             raw_content = file.readlines()
-        
+
         for sentence in raw_content:
             korean_words = re.sub(REGEX, " ", sentence).strip().split()
 
             if len(korean_words) == 0:
-                continue 
-            else: 
+                continue
+            else:
                 for word in korean_words:
                     korean_counter[word] += 1
-    
+
     korean_term_ranking = dict(korean_counter)
 
     with open(OUTPUT_FILE, "w") as file:
         json.dump(korean_term_ranking, file, ensure_ascii=False)
 
-def print_file_name(n):
-    print("Extracting words from: " + INPUT_FILE_TEMPLATE.format(n))
 
 if __name__ == '__main__':
-    main()
+
+    if len(sys.argv) != 2:
+        raise IOError("Please enter a directory containing txt files")
+    
+    input_dir = sys.argv[1]
+
+    main(input_dir)

@@ -24,7 +24,7 @@ class Component extends React.Component {
     event.preventDefault();
     var this_ = this
     if (event.target.value.length > 0 ){
-      axios.get(host_url + "search/" + event.target.value)
+      axios.get(host_url + "ranked_search/" + event.target.value)
       .then(function (response) {
         $("#myInput").autocomplete({source: response.data});
       })
