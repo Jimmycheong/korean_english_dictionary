@@ -209,16 +209,3 @@ def create_path_obj_for_txt(file: str):
 
 def create_path_obj_for_pickle(file: str):
     return Path(f"{TEST_RESOURCES_PATH}/pickles/{file}")
-
-
-
-
-
-
-
-
-
-
-
-
-
