@@ -19,8 +19,10 @@ def main(input_dir):
 
     for filename in os.listdir(input_dir):
         print("Extracting words from: " + filename)
+        if ".txt" not in filename:
+            continue
 
-        with open(input_dir + filename, 'r') as file:
+        with open(input_dir + filename, 'r', encoding="utf-8") as file:
             raw_content = file.readlines()
 
         for sentence in raw_content:
@@ -34,7 +36,7 @@ def main(input_dir):
 
     korean_term_ranking = dict(korean_counter)
 
-    with open(OUTPUT_FILE, "w") as file:
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
         json.dump(korean_term_ranking, file, ensure_ascii=False)
 
 
