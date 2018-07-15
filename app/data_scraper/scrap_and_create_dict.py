@@ -1,13 +1,13 @@
-'''Korean word writer
-'''
+"""Korean word writer
+"""
 
 import json
 
 INPUT_FILE = "../json/merged_dictionaries.json"
 OUTPUT_FILE = "../json/korean_dict.json"
 
-def main():
 
+def main():
     # Read korean word file
 
     print(f"\tReading {INPUT_FILE}\n")
@@ -18,7 +18,7 @@ def main():
     dict_ = {}
 
     for obj in data:
-        if obj["term"] not in dict_: 
+        if obj["term"] not in dict_:
             dict_[obj["term"]] = obj["definition"]
 
     with open(OUTPUT_FILE, "w") as file:
@@ -28,6 +28,7 @@ def main():
         Completed writing to {OUTPUT_FILE}
         Total words written to file: {len(dict_)}
          ''')
+
 
 if __name__ == '__main__':
     main()

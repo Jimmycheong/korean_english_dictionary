@@ -26,6 +26,7 @@ class Component extends React.Component {
     if (event.target.value.length > 0 ){
       axios.get(host_url + "ranked_search/" + event.target.value)
       .then(function (response) {
+        console.log("JUst returned!")
         $("#myInput").autocomplete({source: response.data});
       })
       .catch(function (error) {
@@ -41,6 +42,8 @@ class Component extends React.Component {
     if (inputValue.length > 0 ) {
       axios.get(host_url + "definition/" + inputValue)
       .then(function (response) {
+        console.log("RESPONSE: ")
+        console.log(response)
         this_.setState({
           submittedWord: inputValue,
           definition:response.data[inputValue]

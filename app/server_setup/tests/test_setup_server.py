@@ -4,18 +4,13 @@ A test for server setup functions
 
 """
 
-from os.path import dirname as dir
-# Access parent package
-from sys import path
-
-path.append(dir(path[0]))
-
 import os
 from grappa import should
 from pathlib import Path
 import pytest
 
-from setup_server import (
+from app.constants import ROOT_DIR
+from app.server_setup.server_setup_functions import (
     get_config,
     parse_text_file,
     parse_files,
@@ -58,11 +53,13 @@ def config_fixture():
 TESTS
 '''
 
-TEST_RESOURCES_PATH = "tests/resources"
+TEST_RESOURCES_PATH = f"{ROOT_DIR}/server_setup/tests/resources"
+SERVER_CONFIG = "server_config.json"
 
 
 def test_get_config():
-    config = get_config("config.json")
+
+    config = get_config(f"{ROOT_DIR}/server_setup/{SERVER_CONFIG}")
 
     expected_keys = [
         'final_dump_url',

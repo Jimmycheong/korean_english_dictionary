@@ -3,15 +3,11 @@
 File containing tests for functions.py
 
 """
+import pytest
+from grappa import should
 
-from os.path import dirname as dir
-# Access parent package
-from sys import path
-
-path.append(dir(path[0]))
-
-from functions.Node import Node
-from functions.trie_functions import (
+from app.trie_builder.Node import Node
+from app.trie_builder.trie_functions import (
     create_root_node,
     find_definition,
     update_definition,
@@ -22,9 +18,6 @@ from functions.trie_functions import (
     look_for_words_with_count,
     find_matching_child_node
 )
-
-import pytest
-from grappa import should
 
 '''FIXTURES '''
 

@@ -4,10 +4,6 @@ The following file contains a collection of functions for the trie structure sea
 
 """
 
-import sys
-
-sys.path.append("..")
-
 from typing import List, Tuple
 from .Node import Node
 
@@ -42,6 +38,7 @@ def look_for_words_beginning_with_prefix(node: Node, prefix: str) -> List[str]:
 
     return results
 
+
 def look_for_ranked_words_beginning_with_prefix(node: Node, prefix: str) -> List[Tuple[str, int]]:
     """
     Takes a prefix string and searches a trie for words
@@ -69,8 +66,9 @@ def look_for_ranked_words_beginning_with_prefix(node: Node, prefix: str) -> List
         endings_list = look_for_words_with_count(node)
         prepended_words = list(map(lambda n: (prefix + n[0], n[1]), endings_list))
         results += prepended_words
-        
+
     return sorted(results, key=lambda x: x[1], reverse=True)
+
 
 def find_matching_child_node(node: Node, char: str) -> Node:
     """
@@ -117,6 +115,7 @@ def look_for_words(node: Node, accumulated: str = "") -> List[str]:
             results += look_for_words(child, accumulated + child.letter)
     return results
 
+
 def look_for_words_with_count(node: Node, accumulated: str = "") -> List[str]:
     """
     Recursively searches for all words in a trie structure. Base condition returns if the
@@ -140,6 +139,7 @@ def look_for_words_with_count(node: Node, accumulated: str = "") -> List[str]:
         for child in node.children:
             results += look_for_words_with_count(child, accumulated + child.letter)
     return results
+
 
 def create_root_node():
     """

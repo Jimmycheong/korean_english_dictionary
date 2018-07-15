@@ -14,6 +14,7 @@ import sys
 REGEX = r"[\!…\\a-zA-z\d (),/~\t0-9.?:;’'-_<>\"|`★]+"
 OUTPUT_FILE = "../resources/json/korean_term_ranking.json"
 
+
 def main(input_dir):
     korean_counter = Counter()
 
@@ -44,7 +45,7 @@ if __name__ == '__main__':
 
     if len(sys.argv) != 2:
         raise IOError("Please enter a directory containing txt files")
-    
+
     input_dir = sys.argv[1]
 
     main(input_dir)

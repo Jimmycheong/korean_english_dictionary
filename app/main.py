@@ -3,8 +3,12 @@
 Flask application to serve search engine logic
 
 """
-import pickle
 
+import sys
+
+sys.path.append("..")
+
+import pickle
 from flask import (
     Flask,
     request,
@@ -12,7 +16,7 @@ from flask import (
     render_template,
     jsonify
 )
-from functions.trie_functions import (
+from app.trie_builder.trie_functions import (
     look_for_words_beginning_with_prefix,
     look_for_ranked_words_beginning_with_prefix,
     find_definition,
@@ -49,6 +53,7 @@ def search_for_term(term):
 
     return jsonify(top_20_suggestions)
 
+
 @app.route("/ranked_search/<term>")
 def ranked_search_for_term(term):
     suggestions = look_for_ranked_words_beginning_with_prefix(trie, term)
@@ -58,6 +63,7 @@ def ranked_search_for_term(term):
     print("Returning ranked suggestions: ", top_suggestions)
 
     return jsonify(top_suggestions)
+
 
 @app.route("/definition/<term>")
 def find_definition_of_term(term):
