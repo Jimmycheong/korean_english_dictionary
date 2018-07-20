@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Trie Search Engine UI</title>
+  <title>k2nlearner.com</title>
   <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
@@ -13,32 +13,31 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
+  <link href="https://fonts.googleapis.com/css?family=Nunito|Poiret+One|Yeon+Sung" rel="stylesheet">
 </head>
-<body>
 
-    <nav class="blue darken-3">
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo center">Trie Search Engine UI</a>
-          <ul id="nav-mobile" class="left hide-on-med-and-down">
-          </ul>
-        </div>
-    </nav>
-    <br><br><br><br><br>
-    <div id="component" class="component"></div>
-    <footer class="page-footer blue darken-3">
-        <div class="container">
-            <p class="grey-text text-lighten-4">For more on python, checkout my github here: <a href="https://github.com/Jimmycheong" style="color:white">https://github.com/Jimmycheong</a></p>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-          © 2014 Copyright Text
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-          </div>
-        </div>
-      </footer>
-<script type="text/babel" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<body>
+    <div class="row header-section">
+      <div class="col s4 right-align">
+        <img class="country-flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/255px-Flag_of_South_Korea.svg.png" alt="Italian Trulli">
+      </div>
+      <div class="col s4">
+        <p class="page-logo">k2nlearner</p>    
+      </div>
+      <div class="col s4 left-align">
+        <img 
+          class="country-flag" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1280px-Flag_of_the_United_Kingdom.svg.png" alt="Italian Trulli">
+      </div>
+    </div>
+    <br>
+      <div class="center-align">
+        <h4 class="korean-sentence">안녕하세요. 내 이름은 장가진이에요. 한국어를 공부하기 좋아습니다.</h4>
+      </div>
+      <br>
+      <div id="component" class="component"></div>
+    </div>
+  <script type="text/babel" src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

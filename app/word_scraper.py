@@ -1,17 +1,13 @@
-'''Korean word writer
-'''
+"""Korean word writer
+"""
 
-import re
-import csv
-import random
+from app.data_scraper.word_functions import extract_korean_words_from_list
 
-from functions.word_functions import extract_korean_words_from_list
-
-INPUT_FILE = "resources/txt/6000koreanwords.txt" # TO BE UPDATED
+INPUT_FILE = "resources/txt/6000koreanwords.txt"  # TO BE UPDATED
 OUTPUT_FILE = "resources/txt/korean_word_list.txt"
 
-def main():
 
+def main():
     # Read korean word file
 
     print(f"\tReading {INPUT_FILE}\n")
@@ -32,6 +28,7 @@ def main():
         Completed writing to {OUTPUT_FILE}
         Total words written to file: {len(all_korean_words)}
          ''')
+
 
 if __name__ == '__main__':
     main()

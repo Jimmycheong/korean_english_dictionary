@@ -5,7 +5,6 @@ Flask application to serve search engine logic
 """
 
 import sys
-
 sys.path.append("..")
 
 import pickle
@@ -67,12 +66,14 @@ def ranked_search_for_term(term):
 
 @app.route("/definition/<term>")
 def find_definition_of_term(term):
-    definition = find_definition(trie, term)
+    stripped = term.strip()
+    definition = find_definition(trie, stripped)
 
-    print(f"Searched for the term: {term}\
-            Definition: {definition}")
+    print(f"Searched for the term: '{term}'\
+            Definition: {definition} \
+            with strip")
 
-    return jsonify({term: definition})
+    return jsonify({stripped: definition})
 
 
 @app.route("/update", methods=['POST'])

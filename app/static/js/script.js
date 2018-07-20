@@ -38,7 +38,7 @@ class Component extends React.Component {
   handleSubmit(event){
     event.preventDefault();
     var this_ = this
-    var inputValue = $("#myInput").val()
+    var inputValue = $("#myInput").val().trim()
     if (inputValue.length > 0 ) {
       axios.get(host_url + "definition/" + inputValue)
       .then(function (response) {
@@ -72,22 +72,16 @@ class Component extends React.Component {
     }
 
     console.log("this.state.definition: ", this.state.definition)
-    var searchedWord = (
-      <div> 
-        <h4>Definition</h4>
-        <br/><br/>         
-        <h5>{definition}</h5>
-      </div>
-    )
+    var searchedWord = (<h5>{definition}</h5>)
 
     return(
       <div>
         <div className="col s1"></div>
         <div className="col s5">
         <div className="card-panel" style={cardPanelStyle}>
-          <h4>Search for a term</h4>
+          <h4 className="panel-header">Search for a term</h4>
           <br/><br/>
-          <form onSubmit={this.handleSubmit}>
+          <form className="input-field" onSubmit={this.handleSubmit}>
             <input className="searchInput" id="myInput" type="text" id="myInput" onChange={this.handleChange} ></input>
             <br/><br/>
             <input className="blue darken-3 waves-effect waves-light btn-large" type="submit" value="Submit"></input>
@@ -97,7 +91,11 @@ class Component extends React.Component {
         </div>
         <div className="col s5">
           <div className="card-panel" style={cardPanelStyle}>
-            {searchedWord}
+            <div> 
+              <h4 className="panel-header">Definition</h4>
+              <br/><br/>         
+              {searchedWord}
+            </div>
           </div>
         </div>
         <div className="col s1"></div>

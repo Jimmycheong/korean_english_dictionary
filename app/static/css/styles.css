@@ -14,3 +14,46 @@ body{
 .searchInput {
 	font-size: 20px !important; 
 }
+
+.korean-sentence {
+	font-family: 'Yeon Sung', cursive;
+}
+
+.page-logo {
+	margin: 30px 0px;
+	font-size: 60px;
+	font-family: 'Poiret One', cursive;
+	width: 100%;
+	text-align: center;
+}
+
+.country-flag {
+	height: 110px;
+	width: auto;
+	border: 1px solid black;
+}
+
+.header-section {
+	height: 100px;
+	margin: 20px 0px;
+}
+
+.header-section > .col {
+	height: 100%;
+}
+
+.panel-header {
+	font-family: 'Nunito';
+}
+
+/* Remove Materialise's green underscore when input is focused*/
+
+.input-field input[type=text]:focus {
+     border-bottom: 1px solid #000 !important;
+     box-shadow: 0 1px 0 0 #000;
+   }
+
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+ border-bottom: 1px solid #005eed !important;
+ box-shadow: 0 1px 0 0 #005eed !important;
+}

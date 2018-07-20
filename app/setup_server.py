@@ -4,7 +4,6 @@ The following script sets up the API service by generate the rich data to serve.
 
 """
 import sys
-
 sys.path.append("..")
 
 from app.constants import ROOT_DIR
